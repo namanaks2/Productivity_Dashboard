@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
-import { Search, Bell } from 'lucide-react';
+import { Search, Bell, Sun, Moon } from 'lucide-react';
 
-const Header = ({ greeting, userName, searchQuery, setSearchQuery, unreadCount, showNotifications, setShowNotifications }) => {
+const Header = ({ greeting, userName, searchQuery, setSearchQuery, unreadCount, showNotifications, setShowNotifications, theme, toggleTheme }) => {
   const currentDate = new Date().toLocaleDateString('en-US', {
     weekday: 'long',
     month: 'long',
@@ -51,6 +51,18 @@ const Header = ({ greeting, userName, searchQuery, setSearchQuery, unreadCount, 
         >
           <Bell size={20} />
           {unreadCount > 0 && <span className="notification-badge">{unreadCount}</span>}
+        </button>
+
+        <button
+          id="theme-toggle"
+          className="theme-toggle-btn glass-panel"
+          onClick={toggleTheme}
+          title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+          aria-label="Toggle theme"
+        >
+          <span className={`theme-icon-wrap ${theme === 'dark' ? 'rotated' : ''}`}>
+            {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+          </span>
         </button>
 
         <div className="user-profile">
@@ -181,6 +193,48 @@ const Header = ({ greeting, userName, searchQuery, setSearchQuery, unreadCount, 
           border-radius: 50%;
           object-fit: cover;
           background: var(--bg-primary);
+        }
+
+        .theme-toggle-btn {
+          height: 48px;
+          width: 48px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--bg-tertiary);
+          border: 1px solid var(--border-color);
+          cursor: pointer;
+          color: var(--text-primary);
+          position: relative;
+          overflow: hidden;
+          transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover {
+          border-color: var(--accent-primary);
+          box-shadow: 0 0 16px rgba(99, 102, 241, 0.2);
+          background: var(--bg-hover);
+        }
+
+        .theme-icon-wrap {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .theme-icon-wrap.rotated {
+          transform: rotate(180deg);
+        }
+
+        [data-theme="dark"] .theme-toggle-btn {
+          color: #fbbf24;
+        }
+
+        [data-theme="dark"] .theme-toggle-btn:hover {
+          box-shadow: 0 0 16px rgba(251, 191, 36, 0.2);
+          border-color: #fbbf24;
         }
 
         @media (max-width: 768px) {

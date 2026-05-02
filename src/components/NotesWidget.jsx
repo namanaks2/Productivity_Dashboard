@@ -194,11 +194,11 @@ const NotesWidget = ({ notes, setNotes, addNotification, searchQuery = '', fullV
         .note-actions { display: flex; gap: 4px; opacity: 0; }
         .note-card:hover .note-actions { opacity: 1; }
         .note-action-btn {
-          background: rgba(0, 0, 0, 0.06); border: none; color: var(--text-secondary);
+          background: var(--bg-hover); border: none; color: var(--text-secondary);
           width: 24px; height: 24px; border-radius: 4px; display: flex;
           align-items: center; justify-content: center; cursor: pointer;
         }
-        .note-action-btn:hover { background: rgba(0, 0, 0, 0.12); color: var(--text-primary); }
+        .note-action-btn:hover { background: var(--bg-tertiary); color: var(--text-primary); }
         .note-content {
           font-size: 14px; color: var(--text-primary); line-height: 1.5; opacity: 0.9;
           display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;

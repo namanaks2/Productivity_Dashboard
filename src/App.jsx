@@ -47,6 +47,7 @@ function App() {
     { id: 3, text: 'Reminder: Sync with Mentor at 2:30 PM.', time: '1h ago', read: true },
   ]);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [theme, setTheme] = useState(() => loadFromStorage('aura_theme', 'light'));
 
   useEffect(() => {
     const hour = new Date().getHours();
@@ -58,6 +59,15 @@ function App() {
   useEffect(() => { localStorage.setItem('aura_tasks', JSON.stringify(tasks)); }, [tasks]);
   useEffect(() => { localStorage.setItem('aura_notes', JSON.stringify(notes)); }, [notes]);
   useEffect(() => { localStorage.setItem('aura_events', JSON.stringify(events)); }, [events]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('aura_theme', JSON.stringify(theme));
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  }, []);
 
   const addNotification = useCallback((text) => {
     setNotifications(prev => [{ id: Date.now(), text, time: 'Just now', read: false }, ...prev]);
@@ -119,6 +129,8 @@ function App() {
           unreadCount={unreadCount}
           showNotifications={showNotifications}
           setShowNotifications={setShowNotifications}
+          theme={theme}
+          toggleTheme={toggleTheme}
         />
 
         {showNotifications && (

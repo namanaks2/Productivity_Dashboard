@@ -120,7 +120,7 @@ const WeatherWidget = () => {
         .weather-widget {
           padding: 24px; height: 100%; display: flex; flex-direction: column;
           justify-content: space-between;
-          background: linear-gradient(135deg, #f0f4ff 0%, #e8ecfa 50%, #f5f0ff 100%);
+          background: var(--bg-secondary);
           border: 1px solid rgba(99, 102, 241, 0.08);
         }
         .weather-loading, .weather-error {
@@ -131,7 +131,7 @@ const WeatherWidget = () => {
         .weather-temp h2 { font-size: 42px; font-weight: 700; line-height: 1; margin-bottom: 4px; color: var(--text-primary); }
         .weather-temp p { color: var(--text-secondary); font-size: 15px; font-weight: 500; }
         .weather-refresh {
-          margin-left: auto; background: rgba(255, 255, 255, 0.6); border: 1px solid var(--border-color);
+          margin-left: auto; background: var(--bg-tertiary); border: 1px solid var(--border-color);
           color: var(--text-muted); padding: 8px; border-radius: 8px; cursor: pointer; display: flex;
         }
         .weather-refresh:hover { color: var(--text-primary); border-color: var(--border-hover); }
