@@ -36,4 +36,3 @@ Several features are planned for upcoming development sprints:
 * **High Priority:** OAuth 2.0 login for cross-device sync and Firebase/Supabase integration.
 * **Medium Priority:** Advanced category tagging and a team-based collaboration mode.
 * **Low Priority:** AI-based task prioritization and Google/Outlook Calendar integration.
-* 
